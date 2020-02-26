@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace R5T.Marathon.Default
 {
     // Adapted from: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio#queued-background-tasks-1
-    public class BackgroundWorkItemTaskQueue : IBackgroundWorkItemQueue
+    public class BackgroundWorkItemQueue : IBackgroundWorkItemQueue
     {
         private ConcurrentQueue<Func<CancellationToken, Task>> WorkItems { get; } = new ConcurrentQueue<Func<CancellationToken, Task>>();
         private SemaphoreSlim Signal { get; }  = new SemaphoreSlim(0);
