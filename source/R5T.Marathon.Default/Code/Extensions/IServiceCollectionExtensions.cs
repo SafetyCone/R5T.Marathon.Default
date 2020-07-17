@@ -23,7 +23,7 @@ namespace R5T.Marathon.Default
         /// <summary>
         /// Adds the <see cref="BackgroundWorkItemQueue"/> implmentation of <see cref="IBackgroundWorkItemQueue"/> as a <see cref="ServiceLifetime.Singleton"/>.
         /// </summary>
-        public static ServiceAction<IBackgroundWorkItemQueue> AddBackgroundWorkItemQueueAction(this IServiceCollection services)
+        public static IServiceAction<IBackgroundWorkItemQueue> AddBackgroundWorkItemQueueAction(this IServiceCollection services)
         {
             var serviceAction = new ServiceAction<IBackgroundWorkItemQueue>(() => services.AddBackgroundWorkItemQueue());
             return serviceAction;
