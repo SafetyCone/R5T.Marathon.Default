@@ -1,13 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.Threading;
 using System.Threading.Tasks;
 
+using R5T.T0064;
+
 
 namespace R5T.Marathon.Default
-{
+{[ServiceImplementationMarker]
     // Adapted from: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio#queued-background-tasks-1
-    public class BackgroundWorkItemQueue : IBackgroundWorkItemQueue
+    public class BackgroundWorkItemQueue : IBackgroundWorkItemQueue,IServiceImplementation
     {
         private ConcurrentQueue<Func<IServiceProvider, CancellationToken, Task>> WorkItems { get; } = new ConcurrentQueue<Func<IServiceProvider, CancellationToken, Task>>();
         private SemaphoreSlim Signal { get; }  = new SemaphoreSlim(0);
